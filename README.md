@@ -1,1 +1,1 @@
-# task-manager
+# task-manager “¿qué es esto?” y cómo ejecutar rápido (placeholder).
