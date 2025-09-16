@@ -18,7 +18,8 @@ public class User {
     private String email;
 
     // 🔹 Constructor vacío para JPA
-    public User() {}
+    public User() {
+    }
 
     // 🔹 Constructor con campos
     public User(String username, String email) {
