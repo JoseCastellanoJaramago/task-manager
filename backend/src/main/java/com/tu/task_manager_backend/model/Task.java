@@ -6,6 +6,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -24,9 +26,15 @@ public class Task {
     private LocalDate dueDate;
     private Integer priority;
     private String status;
+    private Boolean completed = false;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id") // FK hacia users.id
+    private User user;  // Nuevo
+    
     // 🔹 Constructor vacío (obligatorio para JPA)
-    public Task() {}
+    public Task() {
+    }
 
     // Getters y setters
     public Long getId() {
@@ -75,5 +83,21 @@ public class Task {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public Boolean getCompleted() {
+        return completed;
+    }
+
+    public void setCompleted(Boolean completed) {
+        this.completed = completed;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

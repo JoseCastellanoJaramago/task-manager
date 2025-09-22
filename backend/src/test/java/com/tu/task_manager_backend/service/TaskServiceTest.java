@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import static org.mockito.ArgumentMatchers.any;
@@ -67,10 +68,10 @@ class TaskServiceTest {
 
         when(taskRepository.findById(1L)).thenReturn(Optional.of(task));
 
-        Task result = taskService.getTaskById(1L);
+        Optional<Task> result = taskService.getTaskById(1L);
 
-        assertNotNull(result);
-        assertEquals("Tarea buscada", result.getTitle());
+        assertTrue(result.isPresent()); // primero verificamos que hay algo dentro
+        assertEquals("Tarea buscada", result.get().getTitle()); // usamos get() para acceder
         verify(taskRepository, times(1)).findById(1L);
     }
 }
