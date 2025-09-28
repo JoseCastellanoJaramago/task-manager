@@ -53,7 +53,7 @@ public class TaskService {
 
                     return taskRepository.save(task);
                 })
-                .orElseThrow(() -> new RuntimeException("Task not found with id " + id));
+                .orElseThrow(() -> new RuntimeException("Tarea no encontrada con id " + id));
     }
 
     // Eliminar una tarea
